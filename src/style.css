@@ -1,0 +1,648 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 4fr;
+    gap: 0em 0em;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "aside header"
+      "aside main-content";
+      height: 100vh;
+}
+
+aside { 
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 9fr;
+    gap: 0em 0em;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "branding"
+      "nav";
+    grid-area: aside;
+    background-color: #3D405B;
+    box-sizing: border-box;
+    align-items: start;
+}
+
+.branding {
+    grid-area: branding;
+    color: #F4F1DE;
+    padding-left: 1em;
+    line-height: 3em;
+    position: sticky;
+    top: 0;
+}
+
+nav {
+    grid-area: nav;
+    position: sticky;
+    top: 4em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li a {
+    display: block;
+    color: #F4F1DE;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin-bottom: 10px;
+}
+nav ul li a:hover {
+    background-color: #555;
+}
+
+header { 
+    display: grid;
+    grid-template-columns: 4fr 1fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0em 1em;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "search alert profile"
+    "welcome buttons buttons";
+    grid-area: header;
+    max-height: 10em;
+}
+
+.search {
+    grid-area: search;
+    padding: 1em 2em;
+    align-self: center;
+}
+
+.search form input {
+    width: 95%;
+    max-height: 1.5em;
+    line-height: 1.5em;
+    padding: 0.2em 0.1em;
+    background-color: #F4F1DE;
+    border: none;
+    border-radius: 8px;
+    transition: padding 0.3s;
+}
+.search form input::placeholder {
+    transition: opacity 0.3s;
+    opacity: 0.7;
+}
+.search form input:focus {
+    outline: none;
+    background-color: #81B29A;
+    padding: 0.2em 0.3em;
+}
+.search form input:focus::placeholder {
+    opacity: 0;
+}
+
+.alert {
+    grid-area: alert;
+    margin-left: auto;
+    align-self: center;
+    padding: 1em 0em;
+}
+.alert button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.alert button:hover {
+    color: #E07A5F;
+}
+
+.profile {
+    display: grid; 
+    grid-template-columns: 1fr 4fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        ". .";
+    grid-area: profile;
+    padding: 1em 2em 1em 0em;
+}
+.profile>img {
+    align-self: center;
+    justify-self: center;
+    border: #3D405B solid 1px;
+    border-radius: 8em;
+}
+.profile>span {
+    align-self: center;
+    font-size: large;
+    font-weight: bold;
+}
+.welcome {
+    display: grid; 
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr;
+    gap: 0 0em;
+    grid-template-areas: 
+        ". .";
+    grid-area: welcome;
+    line-height: 1em;
+    margin-left: 2em;
+}
+
+.welcome>img {
+    align-self: center;
+    justify-self: center;
+    border: #3D405B solid 2px;
+    border-radius: 8em;
+}
+.welcome>div {
+    align-self: center;
+}
+.welcome>div>span {
+    font-size: small;
+}
+.welcome>div>h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.buttons { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0em 0.5em;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "btn1 btn2 btn3";
+    grid-area: buttons;
+    place-items: center;
+}
+
+.btn1 {
+    grid-area: btn1;
+}
+
+.btn2 {
+    grid-area: btn2;
+}
+
+.btn3 {
+    grid-area: btn3;
+}
+
+.buttons button {
+    font-weight: bold;
+    border: none;
+    background-color: #81B29A;
+    padding: 0.5em 2em;
+    border-radius: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.2s ease-in-out;
+}
+.buttons button:hover {
+    color: #3D405B;
+    background-color: #E07A5F;
+    cursor: pointer;
+}
+.buttons button:active {
+    color: #3D405B;
+    background-color: #F2CC8F;
+    transform: translateY(2px);
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1em 1em;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "content content announcements"
+    "content content trending";
+    grid-area: main-content;
+    background-color: #F4F1DE;
+    max-height: 1000px;
+}
+
+.content {
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 0.9fr repeat(3, 4fr);
+    gap: 0em 0em;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "projects-title projects-title"
+      "projects projects"
+      "projects projects"
+      "projects projects";
+    grid-area: content;
+}
+
+.projects-title {
+    grid-area: projects-title;
+    margin-left: 1em;
+}
+.projects-title>h3 {
+    margin: 1em 0 0 0;
+}
+
+.projects {
+    max-height: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1em 1em;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "project1 project2"
+    "project3 project4"
+    "project5 project6";
+    grid-area: projects;
+    margin-left: 1em;
+}
+
+.project1 {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 5fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "p1"
+        "proj-btn1";
+    grid-area: project1;
+}
+
+.project2 {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 5fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "p2"
+        "proj-btn2";
+    grid-area: project2;
+}
+
+.project3 {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 5fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "p3"
+        "proj-btn3";
+    grid-area: project3;
+}
+
+.project4 {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 5fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "p4"
+        "proj-btn4";
+    grid-area: project4;
+}
+
+.project5 {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 5fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "p5"
+        "proj-btn5";
+    grid-area: project5;
+}
+
+.project6 {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 5fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "p6"
+        "proj-btn6";
+    grid-area: project6;
+}
+.p1 {
+    grid-area: p1;
+}
+.proj-btn1 {
+    grid-area: proj-btn1;
+    margin-left: auto;
+}
+.p2 {
+    grid-area: p2;
+}
+.proj-btn2 {
+    grid-area: proj-btn2;
+}
+.p3 {
+    grid-area: p3;
+}
+.proj-btn3 {
+    grid-area: proj-btn3;
+}
+.p4 {
+    grid-area: p4;
+}
+.proj-btn4 {
+    grid-area: proj-btn4;
+}
+.p5 {
+    grid-area: p5;
+}
+.proj-btn5 {
+    grid-area: proj-btn5;
+}
+.p6 {
+    grid-area: p6;
+}
+.proj-btn6 {
+    grid-area: proj-btn6;
+}
+
+.project1,
+.project2,
+.project3,
+.project4,
+.project5,
+.project6 {
+    background-color: #81B29A;
+    border-radius: 8px;
+    max-height: 240px;
+}
+.project1>div:first-child,
+.project2>div:first-child,
+.project3>div:first-child,
+.project4>div:first-child,
+.project5>div:first-child,
+.project6>div:first-child {
+    background-color: #fff;
+    margin-left: 1em;
+    border-radius: 0 8px 0 0;
+}
+.project1>div:last-child,
+.project2>div:last-child,
+.project3>div:last-child,
+.project4>div:last-child,
+.project5>div:last-child,
+.project6>div:last-child {
+    background-color: #fff;
+    margin-left: 1em;
+    border-radius: 0 0 8px 0;
+    position: relative;
+}
+.projects>div>div {
+    margin-top: 0;
+    max-height: 200px;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 6px rgb(61, 64, 91, 0.5);
+    overflow-y: auto;
+}
+
+/* Webkit (Chrome, Safari, newer versions of Opera) */
+/* Firefox uses .container::-moz-scrollbar */
+/* Internet Explorer/Edge uses .container::-ms-scrollbar */
+.p1::-webkit-scrollbar,
+.p2::-webkit-scrollbar,
+.p3::-webkit-scrollbar,
+.p4::-webkit-scrollbar,
+.p5::-webkit-scrollbar,
+.p6::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Firefox uses .container::-moz-scrollbar-track */
+/* Internet Explorer/Edge uses .container::-ms-scrollbar-track */
+.p1::-webkit-scrollbar-track,
+.p2::-webkit-scrollbar-track,
+.p3::-webkit-scrollbar-track,
+.p4::-webkit-scrollbar-track,
+.p5::-webkit-scrollbar-track,
+.p6::-webkit-scrollbar-track {
+    background: #F0ECD1;
+}
+
+/* Firefox uses .container::-moz-scrollbar-thumb */
+/* Internet Explorer/Edge uses .container::-ms-scrollbar-thumb */
+.p1::-webkit-scrollbar-thumb,
+.p2::-webkit-scrollbar-thumb,
+.p3::-webkit-scrollbar-thumb,
+.p4::-webkit-scrollbar-thumb,
+.p5::-webkit-scrollbar-thumb,
+.p6::-webkit-scrollbar-thumb {
+    background: #558B71;
+    border-radius: 8px;
+}
+
+/* Firefox uses .container::-moz-scrollbar-thumb:hover */
+/* Internet Explorer/Edge uses .container::-ms-scrollbar-thumb:hover */
+.p1::-webkit-scrollbar-thumb:hover,
+.p2::-webkit-scrollbar-thumb:hover,
+.p3::-webkit-scrollbar-thumb:hover,
+.p4::-webkit-scrollbar-thumb:hover,
+.p5::-webkit-scrollbar-thumb:hover,
+.p6::-webkit-scrollbar-thumb:hover {
+    background: #365948;
+}
+
+.projects>div>div>.btns {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    max-height: 40px;
+}
+.projects>div>div>div>button {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.projects>div>div>div>button:hover {
+    color: #E07A5F;
+}
+
+.announcements {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "announcement-title"
+    "announce-content";
+    grid-area: announcements;
+}
+
+.announcement-title {
+    grid-area: announcement-title;
+}
+
+.announce-content {
+    max-height: 350px;
+    margin-right: 12px;
+    border-radius: 6px;
+    box-shadow: 4px 8px 8px rgb(224, 122, 95, 0.6);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "announce1"
+    "announce2"
+    "announce3";
+    grid-area: announce-content;
+    background-color: #F4D4A5;
+}
+
+.announce1 {
+    grid-area: announce1;
+}
+
+.announce2 {
+    grid-area: announce2;
+}
+
+.announce3 {
+    grid-area: announce3;
+}
+
+.announce1,
+.announce2,
+.announce3 {
+    align-self: top;
+    justify-self: center;
+    padding: 0em 2em;
+}
+
+.announce1>h4,
+.announce2>h4,
+.announce3>h4 {
+    margin: 1em 0 0 0;
+}
+
+.announce1>p,
+.announce2>p,
+.announce3>p {
+    margin: 0;
+    font-size: small;
+}
+
+.announce2::before,
+.announce3::before {
+    content: ""; 
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 90%;
+    padding-top: 20px;
+    border-bottom: 2px solid #E07A5F;
+}
+.announce3::after {
+    content: ""; 
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 90%;
+    padding-top: 20px;
+}
+
+.trending {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "trend-title"
+    "trend-content";
+    grid-area: trending;
+}
+
+.trend-title {
+    grid-area: trend-title;
+}
+
+.trend-content {
+    margin-right: 12px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    box-shadow: 4px 8px 8px rgb(224, 122, 95, 0.6);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "trend1"
+    "trend2"
+    "trend3"
+    "trend4";
+    grid-area: trend-content;
+    background-color: #F6DEB6;
+}
+
+.trend1 {
+    display: grid; 
+    grid-template-columns: 1fr 5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        ". .";
+    grid-area: trend1;
+}
+
+.trend2 {
+    display: grid; 
+    grid-template-columns: 1fr 5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        ". .";
+    grid-area: trend2;
+}
+
+.trend3 {
+    display: grid; 
+    grid-template-columns: 1fr 5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        ". .";
+    grid-area: trend3;
+}
+
+.trend4 {
+    display: grid; 
+    grid-template-columns: 1fr 5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        ". .";
+    grid-area: trend4;
+}
+
+.trend1>img,
+.trend2>img,
+.trend3>img, 
+.trend4>img {
+    align-self: center;
+    justify-self: center;
+    border: #3D405B solid 1px;
+    border-radius: 8em;
+    background-color: #fff;
+}
+
+.trend1>span,
+.trend2>span,
+.trend3>span, 
+.trend4>span {
+    align-self: center;
+}
